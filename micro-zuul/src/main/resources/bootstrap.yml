@@ -1,0 +1,47 @@
+server:
+  port: 8040
+spring:
+#  cloud:
+#    nacos:
+#      discovery:
+#        server-addr: 146.56.200.9:8848
+#        register-enabled: true
+  cloud:
+    nacos:
+      config:
+        serverAddr: 146.56.200.9:8848
+      discovery:
+        register-enabled: true
+        server-addr: 146.56.200.9:8848
+  application:
+    name: zuul
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+zuul:
+  host:
+    connect-timeout-millis: 3000
+    socket-timeout-millis: 3000
+  routes:
+    NothKingSystem:
+      service-id: NothKingSystem
+      strip-prefix: false
+      path: /api/NothKingSystem/**
+  ignored-services: '*'
+
+
+ribbon:
+  ReadTimeout: 3000
+  ConnectTimeout: 3000
+  #ribbon请求连接的超时时间- 限制3秒内必须请求到服务，并不限制服务处理的返回时间
+
+  #请求处理的超时时间 下级服务响应最大时间,超出时间消费方（路由也是消费方）返回timeout
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeout-in-milliseconds: 3000

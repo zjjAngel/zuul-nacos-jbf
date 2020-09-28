@@ -1,0 +1,25 @@
+#server.port = 8040
+##spring
+#spring.application.name=spring-boot-zuul
+##localhost
+##user.userServicePath=http://localhost:7900/simple/
+##eureka
+##eureka.client.healthcheck.enable=true
+##eureka.client.serviceurl.defaultzone=http://localhost:8848/eureka
+##eureka.instance.preferIpAddress=true
+##ip
+#spring.cloud.nacos.discovery.server-addr=146.56.200.9:8848
+#management.endpoints.web.exposure.include=*
+#spring.cloud.nacos.discovery.register-enabled=true
+#
+##
+##zuul.routes.spring-boot-user=/nacos-provider/**
+#zuul.routes.prefix=/api
+#zuul.routes.nacos-provider.path=/nacos-provider/**
+#zuul.routes.nacos-provider.service-id=nacos-provider
+#zuul.routes.NothKingSystem.path=/NothKingSystem/**
+#zuul.routes.NothKingSystem.service-id==NothKingSystem
+#
+#zuul.host.connect-timeout-millis= 3000
+#socket-timeout-millis= 3000
+#hystrix.command.default.execution.isolation.thread.timeout-in-milliseconds: 3000
